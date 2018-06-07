@@ -1,0 +1,606 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1A27336F20C9309E001600DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A27336E20C9309E001600DE /* AppDelegate.swift */; };
+		1A27337120C9309E001600DE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A27337020C9309E001600DE /* ViewController.swift */; };
+		1A27337420C9309E001600DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A27337220C9309E001600DE /* Main.storyboard */; };
+		1A27337720C9309E001600DE /* MQTTDemoForChatting.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1A27337520C9309E001600DE /* MQTTDemoForChatting.xcdatamodeld */; };
+		1A27337920C930A0001600DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A27337820C930A0001600DE /* Assets.xcassets */; };
+		1A27337C20C930A0001600DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A27337A20C930A0001600DE /* LaunchScreen.storyboard */; };
+		1A27338720C930A0001600DE /* MQTTDemoForChattingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A27338620C930A0001600DE /* MQTTDemoForChattingTests.swift */; };
+		1A27339220C930A0001600DE /* MQTTDemoForChattingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A27339120C930A0001600DE /* MQTTDemoForChattingUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1A27338320C930A0001600DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1A27336320C9309E001600DE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1A27336A20C9309E001600DE;
+			remoteInfo = MQTTDemoForChatting;
+		};
+		1A27338E20C930A0001600DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1A27336320C9309E001600DE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1A27336A20C9309E001600DE;
+			remoteInfo = MQTTDemoForChatting;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1A27336B20C9309E001600DE /* MQTTDemoForChatting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MQTTDemoForChatting.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A27336E20C9309E001600DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1A27337020C9309E001600DE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1A27337320C9309E001600DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1A27337620C9309E001600DE /* MQTTDemoForChatting.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MQTTDemoForChatting.xcdatamodel; sourceTree = "<group>"; };
+		1A27337820C930A0001600DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1A27337B20C930A0001600DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1A27337D20C930A0001600DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1A27338220C930A0001600DE /* MQTTDemoForChattingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MQTTDemoForChattingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A27338620C930A0001600DE /* MQTTDemoForChattingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MQTTDemoForChattingTests.swift; sourceTree = "<group>"; };
+		1A27338820C930A0001600DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1A27338D20C930A0001600DE /* MQTTDemoForChattingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MQTTDemoForChattingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A27339120C930A0001600DE /* MQTTDemoForChattingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MQTTDemoForChattingUITests.swift; sourceTree = "<group>"; };
+		1A27339320C930A0001600DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1A27336820C9309E001600DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1A27337F20C930A0001600DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1A27338A20C930A0001600DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1A27336220C9309E001600DE = {
+			isa = PBXGroup;
+			children = (
+				1A27336D20C9309E001600DE /* MQTTDemoForChatting */,
+				1A27338520C930A0001600DE /* MQTTDemoForChattingTests */,
+				1A27339020C930A0001600DE /* MQTTDemoForChattingUITests */,
+				1A27336C20C9309E001600DE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1A27336C20C9309E001600DE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1A27336B20C9309E001600DE /* MQTTDemoForChatting.app */,
+				1A27338220C930A0001600DE /* MQTTDemoForChattingTests.xctest */,
+				1A27338D20C930A0001600DE /* MQTTDemoForChattingUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1A27336D20C9309E001600DE /* MQTTDemoForChatting */ = {
+			isa = PBXGroup;
+			children = (
+				1A27336E20C9309E001600DE /* AppDelegate.swift */,
+				1A27337020C9309E001600DE /* ViewController.swift */,
+				1A27337220C9309E001600DE /* Main.storyboard */,
+				1A27337820C930A0001600DE /* Assets.xcassets */,
+				1A27337A20C930A0001600DE /* LaunchScreen.storyboard */,
+				1A27337D20C930A0001600DE /* Info.plist */,
+				1A27337520C9309E001600DE /* MQTTDemoForChatting.xcdatamodeld */,
+			);
+			path = MQTTDemoForChatting;
+			sourceTree = "<group>";
+		};
+		1A27338520C930A0001600DE /* MQTTDemoForChattingTests */ = {
+			isa = PBXGroup;
+			children = (
+				1A27338620C930A0001600DE /* MQTTDemoForChattingTests.swift */,
+				1A27338820C930A0001600DE /* Info.plist */,
+			);
+			path = MQTTDemoForChattingTests;
+			sourceTree = "<group>";
+		};
+		1A27339020C930A0001600DE /* MQTTDemoForChattingUITests */ = {
+			isa = PBXGroup;
+			children = (
+				1A27339120C930A0001600DE /* MQTTDemoForChattingUITests.swift */,
+				1A27339320C930A0001600DE /* Info.plist */,
+			);
+			path = MQTTDemoForChattingUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1A27336A20C9309E001600DE /* MQTTDemoForChatting */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1A27339620C930A0001600DE /* Build configuration list for PBXNativeTarget "MQTTDemoForChatting" */;
+			buildPhases = (
+				1A27336720C9309E001600DE /* Sources */,
+				1A27336820C9309E001600DE /* Frameworks */,
+				1A27336920C9309E001600DE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MQTTDemoForChatting;
+			productName = MQTTDemoForChatting;
+			productReference = 1A27336B20C9309E001600DE /* MQTTDemoForChatting.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1A27338120C930A0001600DE /* MQTTDemoForChattingTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1A27339920C930A0001600DE /* Build configuration list for PBXNativeTarget "MQTTDemoForChattingTests" */;
+			buildPhases = (
+				1A27337E20C930A0001600DE /* Sources */,
+				1A27337F20C930A0001600DE /* Frameworks */,
+				1A27338020C930A0001600DE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1A27338420C930A0001600DE /* PBXTargetDependency */,
+			);
+			name = MQTTDemoForChattingTests;
+			productName = MQTTDemoForChattingTests;
+			productReference = 1A27338220C930A0001600DE /* MQTTDemoForChattingTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		1A27338C20C930A0001600DE /* MQTTDemoForChattingUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1A27339C20C930A0001600DE /* Build configuration list for PBXNativeTarget "MQTTDemoForChattingUITests" */;
+			buildPhases = (
+				1A27338920C930A0001600DE /* Sources */,
+				1A27338A20C930A0001600DE /* Frameworks */,
+				1A27338B20C930A0001600DE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1A27338F20C930A0001600DE /* PBXTargetDependency */,
+			);
+			name = MQTTDemoForChattingUITests;
+			productName = MQTTDemoForChattingUITests;
+			productReference = 1A27338D20C930A0001600DE /* MQTTDemoForChattingUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1A27336320C9309E001600DE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = "Fortune4 Technologies";
+				TargetAttributes = {
+					1A27336A20C9309E001600DE = {
+						CreatedOnToolsVersion = 9.3.1;
+					};
+					1A27338120C930A0001600DE = {
+						CreatedOnToolsVersion = 9.3.1;
+						TestTargetID = 1A27336A20C9309E001600DE;
+					};
+					1A27338C20C930A0001600DE = {
+						CreatedOnToolsVersion = 9.3.1;
+						TestTargetID = 1A27336A20C9309E001600DE;
+					};
+				};
+			};
+			buildConfigurationList = 1A27336620C9309E001600DE /* Build configuration list for PBXProject "MQTTDemoForChatting" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1A27336220C9309E001600DE;
+			productRefGroup = 1A27336C20C9309E001600DE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1A27336A20C9309E001600DE /* MQTTDemoForChatting */,
+				1A27338120C930A0001600DE /* MQTTDemoForChattingTests */,
+				1A27338C20C930A0001600DE /* MQTTDemoForChattingUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1A27336920C9309E001600DE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A27337C20C930A0001600DE /* LaunchScreen.storyboard in Resources */,
+				1A27337920C930A0001600DE /* Assets.xcassets in Resources */,
+				1A27337420C9309E001600DE /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1A27338020C930A0001600DE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1A27338B20C930A0001600DE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1A27336720C9309E001600DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A27337120C9309E001600DE /* ViewController.swift in Sources */,
+				1A27337720C9309E001600DE /* MQTTDemoForChatting.xcdatamodeld in Sources */,
+				1A27336F20C9309E001600DE /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1A27337E20C930A0001600DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A27338720C930A0001600DE /* MQTTDemoForChattingTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1A27338920C930A0001600DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A27339220C930A0001600DE /* MQTTDemoForChattingUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1A27338420C930A0001600DE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1A27336A20C9309E001600DE /* MQTTDemoForChatting */;
+			targetProxy = 1A27338320C930A0001600DE /* PBXContainerItemProxy */;
+		};
+		1A27338F20C930A0001600DE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1A27336A20C9309E001600DE /* MQTTDemoForChatting */;
+			targetProxy = 1A27338E20C930A0001600DE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1A27337220C9309E001600DE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1A27337320C9309E001600DE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1A27337A20C930A0001600DE /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1A27337B20C930A0001600DE /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1A27339420C930A0001600DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1A27339520C930A0001600DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1A27339720C930A0001600DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UMUY72KH99;
+				INFOPLIST_FILE = MQTTDemoForChatting/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fortune4.MQTTDemoForChatting;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1A27339820C930A0001600DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UMUY72KH99;
+				INFOPLIST_FILE = MQTTDemoForChatting/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fortune4.MQTTDemoForChatting;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		1A27339A20C930A0001600DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UMUY72KH99;
+				INFOPLIST_FILE = MQTTDemoForChattingTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fortune4.MQTTDemoForChattingTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MQTTDemoForChatting.app/MQTTDemoForChatting";
+			};
+			name = Debug;
+		};
+		1A27339B20C930A0001600DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UMUY72KH99;
+				INFOPLIST_FILE = MQTTDemoForChattingTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fortune4.MQTTDemoForChattingTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MQTTDemoForChatting.app/MQTTDemoForChatting";
+			};
+			name = Release;
+		};
+		1A27339D20C930A0001600DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UMUY72KH99;
+				INFOPLIST_FILE = MQTTDemoForChattingUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fortune4.MQTTDemoForChattingUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MQTTDemoForChatting;
+			};
+			name = Debug;
+		};
+		1A27339E20C930A0001600DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UMUY72KH99;
+				INFOPLIST_FILE = MQTTDemoForChattingUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fortune4.MQTTDemoForChattingUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MQTTDemoForChatting;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1A27336620C9309E001600DE /* Build configuration list for PBXProject "MQTTDemoForChatting" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A27339420C930A0001600DE /* Debug */,
+				1A27339520C930A0001600DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1A27339620C930A0001600DE /* Build configuration list for PBXNativeTarget "MQTTDemoForChatting" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A27339720C930A0001600DE /* Debug */,
+				1A27339820C930A0001600DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1A27339920C930A0001600DE /* Build configuration list for PBXNativeTarget "MQTTDemoForChattingTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A27339A20C930A0001600DE /* Debug */,
+				1A27339B20C930A0001600DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1A27339C20C930A0001600DE /* Build configuration list for PBXNativeTarget "MQTTDemoForChattingUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A27339D20C930A0001600DE /* Debug */,
+				1A27339E20C930A0001600DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1A27337520C9309E001600DE /* MQTTDemoForChatting.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1A27337620C9309E001600DE /* MQTTDemoForChatting.xcdatamodel */,
+			);
+			currentVersion = 1A27337620C9309E001600DE /* MQTTDemoForChatting.xcdatamodel */;
+			path = MQTTDemoForChatting.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 1A27336320C9309E001600DE /* Project object */;
+}
