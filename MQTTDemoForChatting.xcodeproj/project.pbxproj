@@ -16,6 +16,7 @@
 		1A27337C20C930A0001600DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A27337A20C930A0001600DE /* LaunchScreen.storyboard */; };
 		1A27338720C930A0001600DE /* MQTTDemoForChattingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A27338620C930A0001600DE /* MQTTDemoForChattingTests.swift */; };
 		1A27339220C930A0001600DE /* MQTTDemoForChattingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A27339120C930A0001600DE /* MQTTDemoForChattingUITests.swift */; };
+		1A6F129420CBA3B100E350AF /* BackgroundTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6F129320CBA3B100E350AF /* BackgroundTask.swift */; };
 		4BB53D411C74D60C7AA94894 /* Pods_MQTTDemoForChattingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B28EF02425B17D050A61903E /* Pods_MQTTDemoForChattingTests.framework */; };
 		6FE2A306626F62838B870ACA /* Pods_MQTTDemoForChatting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CD5400E1337AA92B4FBD343 /* Pods_MQTTDemoForChatting.framework */; };
 /* End PBXBuildFile section */
@@ -53,6 +54,7 @@
 		1A27338D20C930A0001600DE /* MQTTDemoForChattingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MQTTDemoForChattingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A27339120C930A0001600DE /* MQTTDemoForChattingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MQTTDemoForChattingUITests.swift; sourceTree = "<group>"; };
 		1A27339320C930A0001600DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1A6F129320CBA3B100E350AF /* BackgroundTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundTask.swift; sourceTree = "<group>"; };
 		26E9CF161E99D6E9FD886041 /* Pods-MQTTDemoForChattingTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MQTTDemoForChattingTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MQTTDemoForChattingTests/Pods-MQTTDemoForChattingTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2CDEFE4F646DD06D54F682EF /* Pods-MQTTDemoForChatting.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MQTTDemoForChatting.release.xcconfig"; path = "Pods/Target Support Files/Pods-MQTTDemoForChatting/Pods-MQTTDemoForChatting.release.xcconfig"; sourceTree = "<group>"; };
 		44431EDB46A2DFEF67D3A344 /* Pods-MQTTDemoForChatting.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MQTTDemoForChatting.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MQTTDemoForChatting/Pods-MQTTDemoForChatting.debug.xcconfig"; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 		1A27336D20C9309E001600DE /* MQTTDemoForChatting */ = {
 			isa = PBXGroup;
 			children = (
+				1A6F129320CBA3B100E350AF /* BackgroundTask.swift */,
 				1A27336E20C9309E001600DE /* AppDelegate.swift */,
 				1A27337020C9309E001600DE /* ViewController.swift */,
 				1A27337220C9309E001600DE /* Main.storyboard */,
@@ -385,6 +388,7 @@
 			files = (
 				1A27337120C9309E001600DE /* ViewController.swift in Sources */,
 				1A27337720C9309E001600DE /* MQTTDemoForChatting.xcdatamodeld in Sources */,
+				1A6F129420CBA3B100E350AF /* BackgroundTask.swift in Sources */,
 				1A27336F20C9309E001600DE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

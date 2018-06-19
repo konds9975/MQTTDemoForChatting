@@ -8,16 +8,47 @@
 
 import UIKit
 import Moscapsule
+import UserNotifications
 class ViewController: UIViewController {
 
 
     var mqttClient : MQTTClient!
+    
+    
+    
+    func sendNotification() {
+        let content = UNMutableNotificationContent()
+        content.title = "Meeting Reminder"
+        content.subtitle = "messageSubtitle"
+        content.body = "Don't forget to bring coffee."
+        content.badge = 1
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1,
+                                                        repeats: false)
+        let requestIdentifier = "demoNotification"
+        let request = UNNotificationRequest(identifier: requestIdentifier,
+                                            content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request,
+                                               withCompletionHandler: { (error) in
+                                                // Handle error
+        })
+    }
+    
+    func didReceiveMessage(_ message: MQTTMessage)
+    {
+         self.sendNotification()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-     
+     //self.sendNotification()
         // set MQTT Client Configuration
         let mqttConfig = MQTTConfig(clientId: "ios", host: "test.mosquitto.org", port: 1883, keepAlive: 60)
         //mqttConfig.mqttAuthOpts = MQTTAuthOpts(username: "username", password: "password")
+        
+        // create new MQTT Connection
+       
+        
+        
         mqttConfig.onPublishCallback = { messageId in
             NSLog("published (mid=\(messageId))")
         }
@@ -26,7 +57,7 @@ class ViewController: UIViewController {
             if meaage.topic == "fabit/user/1" {
                 print("MQTT Message received: payload=\(String(describing: meaage.payloadString))")
                 DispatchQueue.main.sync {
-               
+                self.sendNotification()
                 self.logTextView.text = meaage.payloadString
                     
                 }
@@ -37,52 +68,35 @@ class ViewController: UIViewController {
             }
             
         }
-        
-//        mqttConfig.onConnectCallback = { returnCode in
-//            if returnCode == ReturnCode.success {
-//                print("Sucesss Connect")
-//
-//            }
-//            else {
-//                print("fail to Connect")
-//            }
-//        }
-//
-//        mqttConfig.onDisconnectCallback = { reasonCode in
-//            if reasonCode == ReasonCode.disconnect_requested {
-//                print("Sucesss disConnect")
-//            } else  {
-//                print("fail to disConnect")
-//
-//            }
-//        }
-//        mqttConfig.onPublishCallback = { messageId in
-//            // successful publish
-//            print("successful publish message")
-//        }
-//        mqttConfig.onMessageCallback = { mqttMessage in
-//
-//
-//            if mqttMessage.topic == "fabit/user/1" {
-//                print("MQTT Message received: payload=\(String(describing: mqttMessage.messageId))")
-//            }
-//            else
-//            {
-//                print("MQTT Message received: payload=\(String(describing: mqttMessage.messageId))")
-//            }
-//        }
-//        mqttConfig.onSubscribeCallback = { (messageId, grantedQos) in
-//            print("subscribed (mid=\(messageId),grantedQos=\(grantedQos))")
-//        }
+        mqttConfig.onConnectCallback = { returnCode in
+            if returnCode == ReturnCode.success {
+                print("Sucesss Connect")
 
+            }
+            else {
+                print("fail to Connect")
+            }
+        }
+
+        mqttConfig.onDisconnectCallback = { reasonCode in
+            if reasonCode == ReasonCode.disconnect_requested {
+                print("Sucesss disConnect")
+            } else  {
+                print("fail to disConnect")
+
+            }
+        }
         
-        // create new MQTT Connection
         mqttClient = MQTT.newConnection(mqttConfig)
         mqttClient.publish(string:"Hello CloudAMQP MQTT" , topic: "fabit/coach/1", qos:0, retain: false)
         // publish and subscribe
         mqttClient.subscribe("fabit/user/1", qos: 0)
         
-        //mqttClient.reconnect()
+        
+       mqttConfig.onSubscribeCallback = { (messageId, grantedQos) in
+            print("subscribed (mid=\(messageId),grantedQos=\(grantedQos))")
+        }
+
         
         //mqttClient.disconnect()
         
