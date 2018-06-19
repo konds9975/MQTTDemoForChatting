@@ -19,6 +19,7 @@
 		1A6F129420CBA3B100E350AF /* BackgroundTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6F129320CBA3B100E350AF /* BackgroundTask.swift */; };
 		4BB53D411C74D60C7AA94894 /* Pods_MQTTDemoForChattingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B28EF02425B17D050A61903E /* Pods_MQTTDemoForChattingTests.framework */; };
 		6FE2A306626F62838B870ACA /* Pods_MQTTDemoForChatting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CD5400E1337AA92B4FBD343 /* Pods_MQTTDemoForChatting.framework */; };
+		DA3D4EAE20D91FE80003F590 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3D4EAD20D91FE80003F590 /* ChatVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		8CD5400E1337AA92B4FBD343 /* Pods_MQTTDemoForChatting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MQTTDemoForChatting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B28EF02425B17D050A61903E /* Pods_MQTTDemoForChattingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MQTTDemoForChattingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4A864BF429C78BD549F679B /* Pods-MQTTDemoForChattingUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MQTTDemoForChattingUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MQTTDemoForChattingUITests/Pods-MQTTDemoForChattingUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		DA3D4EAD20D91FE80003F590 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		DE8F268B0B2C1AA5E46D9697 /* Pods_MQTTDemoForChattingUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MQTTDemoForChattingUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -121,6 +123,7 @@
 				1A6F129320CBA3B100E350AF /* BackgroundTask.swift */,
 				1A27336E20C9309E001600DE /* AppDelegate.swift */,
 				1A27337020C9309E001600DE /* ViewController.swift */,
+				DA3D4EAD20D91FE80003F590 /* ChatVC.swift */,
 				1A27337220C9309E001600DE /* Main.storyboard */,
 				1A27337820C930A0001600DE /* Assets.xcassets */,
 				1A27337A20C930A0001600DE /* LaunchScreen.storyboard */,
@@ -183,6 +186,7 @@
 				1A27336820C9309E001600DE /* Frameworks */,
 				1A27336920C9309E001600DE /* Resources */,
 				15ECE902FB425F3F103D9193 /* [CP] Embed Pods Frameworks */,
+				EA2F8DC86FDA1691032835AE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -201,6 +205,8 @@
 				1A27337E20C930A0001600DE /* Sources */,
 				1A27337F20C930A0001600DE /* Frameworks */,
 				1A27338020C930A0001600DE /* Resources */,
+				1D375E7456B458A6AE168219 /* [CP] Embed Pods Frameworks */,
+				FB456B587192F008AA48A392 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -220,6 +226,8 @@
 				1A27338920C930A0001600DE /* Sources */,
 				1A27338A20C930A0001600DE /* Frameworks */,
 				1A27338B20C930A0001600DE /* Resources */,
+				07AB7322A68742E32F56F574 /* [CP] Embed Pods Frameworks */,
+				A455DCAD099B43DE12B77AB8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -307,6 +315,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		07AB7322A68742E32F56F574 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MQTTDemoForChattingUITests/Pods-MQTTDemoForChattingUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		15ECE902FB425F3F103D9193 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -323,6 +346,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MQTTDemoForChatting/Pods-MQTTDemoForChatting-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1D375E7456B458A6AE168219 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MQTTDemoForChattingTests/Pods-MQTTDemoForChattingTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		45123F82CF57B69972DFC1E1 /* [CP] Check Pods Manifest.lock */ = {
@@ -361,6 +399,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A455DCAD099B43DE12B77AB8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MQTTDemoForChattingUITests/Pods-MQTTDemoForChattingUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		DE7C13EAEE108270980BBDC3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -379,6 +432,36 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		EA2F8DC86FDA1691032835AE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MQTTDemoForChatting/Pods-MQTTDemoForChatting-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FB456B587192F008AA48A392 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MQTTDemoForChattingTests/Pods-MQTTDemoForChattingTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -390,6 +473,7 @@
 				1A27337720C9309E001600DE /* MQTTDemoForChatting.xcdatamodeld in Sources */,
 				1A6F129420CBA3B100E350AF /* BackgroundTask.swift in Sources */,
 				1A27336F20C9309E001600DE /* AppDelegate.swift in Sources */,
+				DA3D4EAE20D91FE80003F590 /* ChatVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
