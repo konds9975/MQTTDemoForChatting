@@ -153,6 +153,33 @@ class ChatVC: UIViewController,UITextFieldDelegate,UITextViewDelegate
                             
                             
                         }
+                        else if type == "image"
+                        {
+                            
+                            if let message_id = recived["message_id"] as? String
+                            {
+                                DispatchQueue.main.sync {
+                                    self.messageDeliverd(message_id: message_id)
+                                    self.messageRead(message_id: message_id)
+                                    self.sendNotification(message:recived["value"] as? String ?? "")
+                                    let temp = MessageInfo()
+                                    temp.initData(type: recived["type"] as? String, value: recived["value"] as? String, user_id: recived["user_id"] as? String, coach_id: recived["coach_id"] as? String, sent_by: String(recived["sent_by"] as? Int ?? 0), message_id: recived["message_id"] as? String, is_delivered: recived["is_delivered"] as? String, delivered_on:recived["delivered_on"] as? String , is_read: recived["is_read"] as? String, read_on: recived["read_on"] as? String, date: Date())
+                                    DBManager.shared.insertModelInDataBase(messageInfo: [temp])
+                                    
+                                    self.messageList = [MessageInfo]()
+                                    self.messageList = DBManager.shared.getAllMessages()
+                                    self.chatTable.reloadData()
+                                    if self.messageList.count != 0
+                                    {
+                                        self.chatTable.scrollToRow(at: IndexPath(row: self.messageList.count-1, section: 0), at: UITableViewScrollPosition.bottom, animated: true)
+                                    }
+                                }
+                            }
+                            
+                            
+                            print("Message send by couch : text")
+                            
+                        }
                         else if type == "typing_start"
                         {
                             print("Message typing_end : typing_start")
@@ -254,6 +281,29 @@ class ChatVC: UIViewController,UITextFieldDelegate,UITextViewDelegate
         }
         
     }
+    
+    @IBAction func sendImageBtnAction(_ sender: Any) {
+        
+            
+            let payload = ["type":"image","value":"","user_id":"1","coach_id":"1","sent_by":"2","message_id":udidDevice+"\(Date())","is_delivered":"0","delivered_on":"","is_read":"0","read_on":""]
+            
+            let temp = MessageInfo()
+            
+            
+            temp.initData(type: payload["type"], value: payload["value"], user_id: payload["user_id"], coach_id: payload["coach_id"], sent_by: payload["sent_by"], message_id: payload["message_id"], is_delivered: payload["is_delivered"], delivered_on:payload["delivered_on"], is_read: payload["is_read"], read_on: payload["read_on"], date: Date())
+            DBManager.shared.insertModelInDataBase(messageInfo: [temp])
+            self.sendMessage(messageInfo: payload)
+            
+            messageList = [MessageInfo]()
+            messageList = DBManager.shared.getAllMessages()
+            self.chatTable.reloadData()
+            if messageList.count != 0
+            {
+                self.chatTable.scrollToRow(at: IndexPath(row: messageList.count-1, section: 0), at: UITableViewScrollPosition.bottom, animated: true)
+            }
+       
+    }
+    
     func messageTypingStart()
     {
        
@@ -357,58 +407,192 @@ extension ChatVC : UITableViewDelegate,UITableViewDataSource
         
         
         let temp = messageList[indexPath.row]
-        if temp.sent_by == "2"
+        if temp.type == "image"
         {
-       
-           let cell = self.chatTable.dequeueReusableCell(withIdentifier: "ChatVCCellS") as! ChatVCCellS
+            if temp.sent_by == "2"
+            {
+                
+                let cell = self.chatTable.dequeueReusableCell(withIdentifier: "ChatVCCellImageS") as! ChatVCCellImageS
                 cell.backView.layer.cornerRadius = 10
-            cell.messageLbl.text = temp.value
-            let dateVar = temp.date
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "hh:mm a"
-            print(dateFormatter.string(from: dateVar!))
-            cell.timeLbl.text = dateFormatter.string(from: dateVar!)
-            
-            if temp.is_delivered == "0"
-            {
-                 cell.tickImage.image = #imageLiteral(resourceName: "clock")
+                let url = URL(string:
+                    temp.value)
+                if url != nil
+                {
+                    let task = URLSession.shared.dataTask(with: url!) { data, response, error in
+                        guard let data = data, error == nil else { return }
+                        
+                        DispatchQueue.main.async() {    // execute on main thread
+                            cell.imageView1.image = UIImage(data: data)
+                            if let image = UIImage(data: data) {
+                                let ratio = image.size.width / image.size.height
+                                if cell.backView.frame.width > cell.backView.frame.height {
+                                    let newHeight = cell.backView.frame.width / ratio
+                                    //cell.imageView1.frame.size = CGSize(width: cell.backView.frame.width, height: newHeight)
+                                    cell.height.constant = newHeight
+                                    cell.width.constant = cell.backView.frame.width
+                                }
+                                else{
+                                    let newWidth = cell.backView.frame.height * ratio
+                                    //cell.imageView1.frame.size = CGSize(width: newWidth, height: cell.backView.frame.height)
+                                    cell.height.constant = newWidth
+                                    cell.width.constant = cell.backView.frame.width
+                                }
+                            }
+                        }
+                    }
+                    task.resume()
+                }
+                let dateVar = temp.date
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "hh:mm a"
+                print(dateFormatter.string(from: dateVar!))
+                cell.timeLbl.text = dateFormatter.string(from: dateVar!)
+
+                if temp.is_delivered == "0"
+                {
+                    cell.tickImage.image = #imageLiteral(resourceName: "clock")
+                }
+                else if temp.is_delivered == "1"
+                {
+                    cell.tickImage.image = #imageLiteral(resourceName: "check_1")
+                }
+
+                if temp.is_read == "1"
+                {
+                    cell.tickImage.image = #imageLiteral(resourceName: "check_2")
+                }
+                cell.bubbleView.layer.cornerRadius = 10
+                cell.layoutIfNeeded()
+                return cell
+                
             }
-            else if temp.is_delivered == "1"
+            else if temp.sent_by == "1"
             {
-                cell.tickImage.image = #imageLiteral(resourceName: "check_1")
+                let cell = self.chatTable.dequeueReusableCell(withIdentifier: "ChatVCCellImageR") as! ChatVCCellImageR
+                cell.backView.layer.cornerRadius = 10
+                let url = URL(string:
+                    temp.value)
+                if url != nil
+                {
+                    let task = URLSession.shared.dataTask(with: url!) { data, response, error in
+                        guard let data = data, error == nil else { return }
+                        
+                        DispatchQueue.main.async() {    // execute on main thread
+                            cell.imageView1.image = UIImage(data: data)
+                            if let image = UIImage(data: data) {
+                                let ratio = image.size.width / image.size.height
+                                if cell.backView.frame.width > cell.backView.frame.height {
+                                    let newHeight = cell.backView.frame.width / ratio
+                                    //cell.imageView1.frame.size = CGSize(width: cell.backView.frame.width, height: newHeight)
+                                    
+                                    if newHeight<300
+                                    {
+                                        cell.height.constant = newHeight
+                                        cell.width.constant = cell.backView.frame.width
+                                    }
+                                    else
+                                    {
+                                        cell.height.constant = newHeight/2
+                                        cell.width.constant = cell.backView.frame.width/2
+                                    }
+                                    
+                                }
+                                else{
+                                    let newWidth = cell.backView.frame.height * ratio
+                                    //cell.imageView1.frame.size = CGSize(width: newWidth, height: cell.backView.frame.height)
+                                    if newWidth<300
+                                    {
+                                        cell.width.constant = newWidth
+                                        cell.height.constant = cell.backView.frame.height
+                                    }
+                                    else
+                                    {
+                                        cell.width.constant = newWidth/2
+                                        cell.height.constant = cell.backView.frame.height/2
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    task.resume()
+                }
+                let dateVar = temp.date
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "hh:mm a"
+                print(dateFormatter.string(from: dateVar!))
+                cell.timeLbl.text = dateFormatter.string(from: dateVar!)
+                cell.bubbleView.layer.cornerRadius = 10
+                cell.layoutIfNeeded()
+                return cell
             }
-            
-            if temp.is_read == "1"
+            else
             {
-                cell.tickImage.image = #imageLiteral(resourceName: "check_2")
+                let cell = self.chatTable.dequeueReusableCell(withIdentifier: "ChatVCCellR") as! ChatVCCellR
+                cell.backView.layer.cornerRadius = 10
+                cell.messageLbl.text = "Message not send"
+                cell.bubbleView.layer.cornerRadius = 10
+                cell.layoutIfNeeded()
+                return cell
             }
-            cell.bubbleView.layer.cornerRadius = 10
-            return cell
-            
-        }
-        else if temp.sent_by == "1"
-        {
-            let cell = self.chatTable.dequeueReusableCell(withIdentifier: "ChatVCCellR") as! ChatVCCellR
-            cell.backView.layer.cornerRadius = 10
-            cell.messageLbl.text = temp.value
-            let dateVar = temp.date
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "hh:mm a"
-            print(dateFormatter.string(from: dateVar!))
-            cell.timeLbl.text = dateFormatter.string(from: dateVar!)
-            cell.bubbleView.layer.cornerRadius = 10
-           
-            return cell
         }
         else
         {
-            let cell = self.chatTable.dequeueReusableCell(withIdentifier: "ChatVCCellR") as! ChatVCCellR
-            cell.backView.layer.cornerRadius = 10
-            cell.messageLbl.text = "Message not send"
-            cell.bubbleView.layer.cornerRadius = 10
-            return cell
-        }
         
+            if temp.sent_by == "2"
+            {
+           
+               let cell = self.chatTable.dequeueReusableCell(withIdentifier: "ChatVCCellS") as! ChatVCCellS
+                    cell.backView.layer.cornerRadius = 10
+                cell.messageLbl.text = temp.value
+                let dateVar = temp.date
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "hh:mm a"
+                print(dateFormatter.string(from: dateVar!))
+                cell.timeLbl.text = dateFormatter.string(from: dateVar!)
+                
+                if temp.is_delivered == "0"
+                {
+                     cell.tickImage.image = #imageLiteral(resourceName: "clock")
+                }
+                else if temp.is_delivered == "1"
+                {
+                    cell.tickImage.image = #imageLiteral(resourceName: "check_1")
+                }
+                
+                if temp.is_read == "1"
+                {
+                    cell.tickImage.image = #imageLiteral(resourceName: "check_2")
+                }
+                cell.bubbleView.layer.cornerRadius = 10
+                cell.layoutIfNeeded()
+                return cell
+                
+            }
+            else if temp.sent_by == "1"
+            {
+                let cell = self.chatTable.dequeueReusableCell(withIdentifier: "ChatVCCellR") as! ChatVCCellR
+                cell.backView.layer.cornerRadius = 10
+                cell.messageLbl.text = temp.value
+                let dateVar = temp.date
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "hh:mm a"
+                print(dateFormatter.string(from: dateVar!))
+                cell.timeLbl.text = dateFormatter.string(from: dateVar!)
+                cell.bubbleView.layer.cornerRadius = 10
+                cell.layoutIfNeeded()
+                return cell
+            }
+            else
+            {
+                let cell = self.chatTable.dequeueReusableCell(withIdentifier: "ChatVCCellR") as! ChatVCCellR
+                cell.backView.layer.cornerRadius = 10
+                cell.messageLbl.text = "Message not send"
+                cell.bubbleView.layer.cornerRadius = 10
+                cell.layoutIfNeeded()
+                return cell
+            }
+        
+        }
         
        
     }
@@ -418,6 +602,34 @@ extension ChatVC : UITableViewDelegate,UITableViewDataSource
     }
    
 }
+
+class ChatVCCellImageR: UITableViewCell
+{
+    @IBOutlet var backView : UIView!
+    @IBOutlet var timeLbl : UILabel!
+    @IBOutlet var bubbleView : UIView!
+    
+    @IBOutlet weak var imageView1: UIImageView!
+    @IBOutlet weak var width: NSLayoutConstraint!
+    @IBOutlet weak var height: NSLayoutConstraint!
+}
+
+class ChatVCCellImageS: UITableViewCell
+{
+    @IBOutlet weak var width: NSLayoutConstraint!
+    @IBOutlet weak var height: NSLayoutConstraint!
+    @IBOutlet weak var tickImage: UIImageView!
+    @IBOutlet var backView : UIView!
+    
+    @IBOutlet weak var imageView1: UIImageView!
+    
+    @IBOutlet var timeLbl : UILabel!
+    @IBOutlet var bubbleView : UIView!
+    
+}
+
+
+
 
 class ChatVCCellR: UITableViewCell
 {
