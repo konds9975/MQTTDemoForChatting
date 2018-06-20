@@ -1,10 +1,16 @@
 PODS:
   - Moscapsule (0.6.2)
   - OpenSSL-Universal (1.0.2.13)
+  - Realm (3.5.0):
+    - Realm/Headers (= 3.5.0)
+  - Realm/Headers (3.5.0)
+  - RealmSwift (3.5.0):
+    - Realm (= 3.5.0)
 
 DEPENDENCIES:
   - Moscapsule (from `https://github.com/flightonary/Moscapsule.git`)
   - OpenSSL-Universal
+  - RealmSwift
 
 EXTERNAL SOURCES:
   Moscapsule:
@@ -18,7 +24,9 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Moscapsule: dbf891e0a6b75cbe63c98d9bdbbad6ff4aaf00e6
   OpenSSL-Universal: 401888162f11c33ebbd46f782d9229da35c61327
+  Realm: 0378021c424e4e2bd6a0e63b27881e929d9b9ad1
+  RealmSwift: 3322562622fda2ad596985ead4d8d8be30cf838c
 
-PODFILE CHECKSUM: 7dbd62d4e76125df997af22a69b0d4271a7d4314
+PODFILE CHECKSUM: 282426e4caab954e013c5fc170253a35d7c5adfc
 
 COCOAPODS: 1.4.0

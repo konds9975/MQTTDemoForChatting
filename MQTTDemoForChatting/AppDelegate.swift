@@ -42,7 +42,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        
+        UIApplication.shared.applicationIconBadgeNumber = 0
+        DBManager.shared.realmDataBaseSetup()
         UNUserNotificationCenter.current().requestAuthorization(options: [[.alert, .sound, .badge]], completionHandler: { (granted, error) in
             // Handle Error
         })
@@ -86,7 +87,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
              UIApplication.shared.applicationIconBadgeNumber = 100
             backgroundTask.end()
         }
-         UIApplication.shared.applicationIconBadgeNumber = 2
+         UIApplication.shared.applicationIconBadgeNumber = 0
         print("begin")
     }
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {

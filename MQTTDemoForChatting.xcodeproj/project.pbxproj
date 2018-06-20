@@ -19,6 +19,7 @@
 		1A6F129420CBA3B100E350AF /* BackgroundTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6F129320CBA3B100E350AF /* BackgroundTask.swift */; };
 		4BB53D411C74D60C7AA94894 /* Pods_MQTTDemoForChattingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B28EF02425B17D050A61903E /* Pods_MQTTDemoForChattingTests.framework */; };
 		6FE2A306626F62838B870ACA /* Pods_MQTTDemoForChatting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CD5400E1337AA92B4FBD343 /* Pods_MQTTDemoForChatting.framework */; };
+		DA19502120DA324E00E12457 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA19502020DA324E00E12457 /* DBManager.swift */; };
 		DA3D4EAE20D91FE80003F590 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3D4EAD20D91FE80003F590 /* ChatVC.swift */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 		8CD5400E1337AA92B4FBD343 /* Pods_MQTTDemoForChatting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MQTTDemoForChatting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B28EF02425B17D050A61903E /* Pods_MQTTDemoForChattingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MQTTDemoForChattingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4A864BF429C78BD549F679B /* Pods-MQTTDemoForChattingUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MQTTDemoForChattingUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MQTTDemoForChattingUITests/Pods-MQTTDemoForChattingUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		DA19502020DA324E00E12457 /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		DA3D4EAD20D91FE80003F590 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		DE8F268B0B2C1AA5E46D9697 /* Pods_MQTTDemoForChattingUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MQTTDemoForChattingUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -120,6 +122,7 @@
 		1A27336D20C9309E001600DE /* MQTTDemoForChatting */ = {
 			isa = PBXGroup;
 			children = (
+				DA19502020DA324E00E12457 /* DBManager.swift */,
 				1A6F129320CBA3B100E350AF /* BackgroundTask.swift */,
 				1A27336E20C9309E001600DE /* AppDelegate.swift */,
 				1A27337020C9309E001600DE /* ViewController.swift */,
@@ -338,10 +341,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MQTTDemoForChatting/Pods-MQTTDemoForChatting-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Moscapsule/Moscapsule.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moscapsule.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -470,6 +477,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A27337120C9309E001600DE /* ViewController.swift in Sources */,
+				DA19502120DA324E00E12457 /* DBManager.swift in Sources */,
 				1A27337720C9309E001600DE /* MQTTDemoForChatting.xcdatamodeld in Sources */,
 				1A6F129420CBA3B100E350AF /* BackgroundTask.swift in Sources */,
 				1A27336F20C9309E001600DE /* AppDelegate.swift in Sources */,
