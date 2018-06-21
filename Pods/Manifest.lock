@@ -1,4 +1,5 @@
 PODS:
+  - IQKeyboardManagerSwift (6.0.2)
   - Moscapsule (0.6.2)
   - OpenSSL-Universal (1.0.2.13)
   - Realm (3.5.0):
@@ -6,11 +7,16 @@ PODS:
   - Realm/Headers (3.5.0)
   - RealmSwift (3.5.0):
     - Realm (= 3.5.0)
+  - SDWebImage (4.3.3):
+    - SDWebImage/Core (= 4.3.3)
+  - SDWebImage/Core (4.3.3)
 
 DEPENDENCIES:
+  - IQKeyboardManagerSwift
   - Moscapsule (from `https://github.com/flightonary/Moscapsule.git`)
   - OpenSSL-Universal
   - RealmSwift
+  - SDWebImage
 
 EXTERNAL SOURCES:
   Moscapsule:
@@ -22,11 +28,13 @@ CHECKOUT OPTIONS:
     :git: https://github.com/flightonary/Moscapsule.git
 
 SPEC CHECKSUMS:
+  IQKeyboardManagerSwift: 59d4b0e140bc546c3c76ae5bb35b3dafd10b8172
   Moscapsule: dbf891e0a6b75cbe63c98d9bdbbad6ff4aaf00e6
   OpenSSL-Universal: 401888162f11c33ebbd46f782d9229da35c61327
   Realm: 0378021c424e4e2bd6a0e63b27881e929d9b9ad1
   RealmSwift: 3322562622fda2ad596985ead4d8d8be30cf838c
+  SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
 
-PODFILE CHECKSUM: 282426e4caab954e013c5fc170253a35d7c5adfc
+PODFILE CHECKSUM: 1bc47319eebc360691612c7f2bf12c23c5aec263
 
 COCOAPODS: 1.4.0

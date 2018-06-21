@@ -12,6 +12,10 @@ import UserNotifications
 class ChatVC: UIViewController,UITextFieldDelegate,UITextViewDelegate
 {
     
+//    @IBOutlet weak var scrollView: UIScrollView!
+//    @IBOutlet weak var viewHeight: NSLayoutConstraint!
+    @IBOutlet var chooseBuuton: UIButton!
+    let imagePicker = UIImagePickerController()
     var messageList : [MessageInfo] = []
     
     let udidDevice = UIDevice.current.identifierForVendor!.uuidString
@@ -47,13 +51,15 @@ class ChatVC: UIViewController,UITextFieldDelegate,UITextViewDelegate
     override func viewDidLoad()
     {
         super.viewDidLoad()
+       
         //self.sendButton.contentEdgeInsets = UIEdgeInsets(top: -10, left: -10, bottom: -10, right: -10)
         //self.addButton.contentEdgeInsets = UIEdgeInsets(top: -10, left: -10, bottom: -10, right: -10)
         
         
         self.chatTable.delegate = self
         self.chatTable.dataSource = self
-        
+        //self.chatTable.estimatedRowHeight = 100
+        self.chatTable.rowHeight = UITableViewAutomaticDimension
         self.sendTextViewBackView.layer.cornerRadius = 0
         self.sendTextViewBackView.layer.borderWidth = 1
         self.sendTextViewBackView.layer.borderColor = UIColor.groupTableViewBackground.cgColor
@@ -63,20 +69,28 @@ class ChatVC: UIViewController,UITextFieldDelegate,UITextViewDelegate
         self.sendTextView.layer.borderColor = UIColor.groupTableViewBackground.cgColor
         self.sendTextView.delegate = self
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
-        self.view.addGestureRecognizer(tapGesture)
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
+//        self.view.addGestureRecognizer(tapGesture)
         
         self.mqttSetUp()
         
         self.navigationItem.title = "Coach"
         
         messageList = DBManager.shared.getAllMessages()
-        self.chatTable.reloadData()
-        if messageList.count != 0
+        DispatchQueue.main.async()
         {
-            self.chatTable.scrollToRow(at: IndexPath(row: messageList.count-1, section: 0), at: UITableViewScrollPosition.bottom, animated: true)
+            self.chatTable.reloadData()
         }
         
+        
+    }
+    override func viewDidAppear(_ animated: Bool) {
+       // self.viewHeight.constant = self.view.frame.size.height-50
+        if messageList.count != 0
+        {
+            self.chatTable.reloadData()
+            self.chatTable.scrollToRow(at: IndexPath(row: messageList.count-1, section: 0), at: UITableViewScrollPosition.bottom, animated: false)
+        }
     }
     
     func mqttSetUp()
@@ -102,11 +116,11 @@ class ChatVC: UIViewController,UITextFieldDelegate,UITextViewDelegate
                                 DBManager.shared.updateIsDelivery(messageId: recived["message_id"] as? String, isDelivery: "1",isRead : "0")
                                 self.messageList = [MessageInfo]()
                                 self.messageList = DBManager.shared.getAllMessages()
-                                self.chatTable.reloadData()
-                                if self.messageList.count != 0
-                                {
-                                    self.chatTable.scrollToRow(at: IndexPath(row: self.messageList.count-1, section: 0), at: UITableViewScrollPosition.bottom, animated: false)
-                                }
+                                //self.chatTable.reloadData()
+//                                if self.messageList.count != 0
+//                                {
+//                                    self.chatTable.scrollToRow(at: IndexPath(row: self.messageList.count-1, section: 0), at: UITableViewScrollPosition.bottom, animated: false)
+//                                }
                                 
                             }
                             print("Message delivered to couch : delivery_acknowledgement")
@@ -117,11 +131,11 @@ class ChatVC: UIViewController,UITextFieldDelegate,UITextViewDelegate
                              DBManager.shared.updateIsDelivery(messageId: recived["message_id"] as? String, isDelivery: "1",isRead : "1")
                                 self.messageList = [MessageInfo]()
                                 self.messageList = DBManager.shared.getAllMessages()
-                                self.chatTable.reloadData()
-                                if self.messageList.count != 0
-                                {
-                                    self.chatTable.scrollToRow(at: IndexPath(row: self.messageList.count-1, section: 0), at: UITableViewScrollPosition.bottom, animated: false)
-                                }
+                                //self.chatTable.reloadData()
+//                                if self.messageList.count != 0
+//                                {
+//                                    self.chatTable.scrollToRow(at: IndexPath(row: self.messageList.count-1, section: 0), at: UITableViewScrollPosition.bottom, animated: false)
+//                                }
                             }
                             print("Message read by couch : read_receipt")
                         }
@@ -250,6 +264,7 @@ class ChatVC: UIViewController,UITextFieldDelegate,UITextViewDelegate
         }
         return nil
     }
+    
     @IBAction func sendBtnAction(_ sender: Any) {
         if sendTextView.text != ""
         {
@@ -284,23 +299,7 @@ class ChatVC: UIViewController,UITextFieldDelegate,UITextViewDelegate
     
     @IBAction func sendImageBtnAction(_ sender: Any) {
         
-            
-            let payload = ["type":"image","value":"","user_id":"1","coach_id":"1","sent_by":"2","message_id":udidDevice+"\(Date())","is_delivered":"0","delivered_on":"","is_read":"0","read_on":""]
-            
-            let temp = MessageInfo()
-            
-            
-            temp.initData(type: payload["type"], value: payload["value"], user_id: payload["user_id"], coach_id: payload["coach_id"], sent_by: payload["sent_by"], message_id: payload["message_id"], is_delivered: payload["is_delivered"], delivered_on:payload["delivered_on"], is_read: payload["is_read"], read_on: payload["read_on"], date: Date())
-            DBManager.shared.insertModelInDataBase(messageInfo: [temp])
-            self.sendMessage(messageInfo: payload)
-            
-            messageList = [MessageInfo]()
-            messageList = DBManager.shared.getAllMessages()
-            self.chatTable.reloadData()
-            if messageList.count != 0
-            {
-                self.chatTable.scrollToRow(at: IndexPath(row: messageList.count-1, section: 0), at: UITableViewScrollPosition.bottom, animated: true)
-            }
+        self.openPickerCamra()
        
     }
     
@@ -355,16 +354,16 @@ class ChatVC: UIViewController,UITextFieldDelegate,UITextViewDelegate
             
         }
     }
-    @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
-        sendTextView.resignFirstResponder()
-    }
+//    @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
+//        sendTextView.resignFirstResponder()
+//    }
 
     func textViewDidBeginEditing(_ textView: UITextView) {
-        moveTextField(textView, moveDistance: -256, up: true)
+        //moveTextField(textView, moveDistance: 300, up: true)
         self.messageTypingStart()
     }
     func textViewDidEndEditing(_ textView: UITextView) {
-        moveTextField(textView, moveDistance: -256, up: false)
+       // moveTextField(textView, moveDistance: 300, up: false)
         self.messageTypingEnd()
     }
     func textViewDidChange(_ textView: UITextView) {
@@ -377,15 +376,32 @@ class ChatVC: UIViewController,UITextFieldDelegate,UITextViewDelegate
         }
         
     }
-    func moveTextField(_ textView: UITextView, moveDistance: Int, up: Bool) {
-        let moveDuration = 0.2
-        let movement: CGFloat = CGFloat(up ? moveDistance : -moveDistance)
-        UIView.beginAnimations("animateTextView", context: nil)
-        UIView.setAnimationBeginsFromCurrentState(true)
-        UIView.setAnimationDuration(moveDuration)
-        self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
-        UIView.commitAnimations()
-    }
+//    func moveTextField(_ textView: UITextView, moveDistance: Int, up: Bool) {
+//
+//
+//        if up
+//        {
+//            self.viewHeight.constant = self.view.frame.size.height  + CGFloat(moveDistance)
+//            self.scrollView.setContentOffset(CGPoint(x: 0, y: self.view.frame.size.height-50), animated: true)
+//
+//        }
+//        else
+//        {
+//            self.viewHeight.constant = self.view.frame.size.height+50
+//            self.scrollView.setContentOffset(CGPoint(x: 0, y: self.view.frame.size.height-50), animated: true)
+//
+//        }
+//
+//
+//
+////        let moveDuration = 0.2
+////        let movement: CGFloat = CGFloat(up ? moveDistance : -moveDistance)
+////        UIView.beginAnimations("animateTextView", context: nil)
+////        UIView.setAnimationBeginsFromCurrentState(true)
+////        UIView.setAnimationDuration(moveDuration)
+////        self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
+////        UIView.commitAnimations()
+//    }
     
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -398,6 +414,18 @@ class ChatVC: UIViewController,UITextFieldDelegate,UITextViewDelegate
 
 extension ChatVC : UITableViewDelegate,UITableViewDataSource
 {
+    
+    func imageWithImage (sourceImage:UIImage, scaledToWidth: CGFloat) -> UIImage {
+        let oldWidth = sourceImage.size.width
+        let scaleFactor = scaledToWidth / oldWidth
+        let newHeight = sourceImage.size.height * scaleFactor
+        let newWidth = oldWidth * scaleFactor
+        UIGraphicsBeginImageContext(CGSize(width:newWidth, height:newHeight))
+        sourceImage.draw(in: CGRect(x:0, y:0, width:newWidth, height:newHeight))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage!
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messageList.count
     }
@@ -414,33 +442,55 @@ extension ChatVC : UITableViewDelegate,UITableViewDataSource
                 
                 let cell = self.chatTable.dequeueReusableCell(withIdentifier: "ChatVCCellImageS") as! ChatVCCellImageS
                 cell.backView.layer.cornerRadius = 10
+                
                 let url = URL(string:
                     temp.value)
+                
+                cell.width.constant = 300
+                cell.height.constant = 300
+                
                 if url != nil
                 {
-                    let task = URLSession.shared.dataTask(with: url!) { data, response, error in
-                        guard let data = data, error == nil else { return }
-                        
-                        DispatchQueue.main.async() {    // execute on main thread
-                            cell.imageView1.image = UIImage(data: data)
-                            if let image = UIImage(data: data) {
-                                let ratio = image.size.width / image.size.height
-                                if cell.backView.frame.width > cell.backView.frame.height {
-                                    let newHeight = cell.backView.frame.width / ratio
-                                    //cell.imageView1.frame.size = CGSize(width: cell.backView.frame.width, height: newHeight)
-                                    cell.height.constant = newHeight
-                                    cell.width.constant = cell.backView.frame.width
+                    cell.imageView1?.sd_setImage(with: url) { (image, error, cache, urls) in
+                        if (error != nil)
+                        {
+                           
+                        }
+                        else
+                        {
+
+                                if image != nil
+                                {
+                                  
+                                    if image!.size.width < 290
+                                    {
+                                        cell.imageView1.image = image
+                                        if image!.size.width > 90
+                                        {
+                                            cell.width.constant = (image?.size.width)!
+                                            cell.height.constant = (image?.size.height)!
+                                        }
+                                        else
+                                        {
+                                            cell.width.constant = 100
+                                            cell.height.constant = (image?.size.height)!
+                                        }
+                                    }
+                                    else
+                                    {
+                                        let image = self.imageWithImage(sourceImage: image!, scaledToWidth: 290)
+                                        cell.imageView1.image = image
+                                        cell.width.constant = image.size.width
+                                        cell.height.constant = image.size.height
+                                    }
                                 }
-                                else{
-                                    let newWidth = cell.backView.frame.height * ratio
-                                    //cell.imageView1.frame.size = CGSize(width: newWidth, height: cell.backView.frame.height)
-                                    cell.height.constant = newWidth
-                                    cell.width.constant = cell.backView.frame.width
+                                else
+                                {
+                                    
                                 }
-                            }
+
                         }
                     }
-                    task.resume()
                 }
                 let dateVar = temp.date
                 let dateFormatter = DateFormatter()
@@ -462,7 +512,8 @@ extension ChatVC : UITableViewDelegate,UITableViewDataSource
                     cell.tickImage.image = #imageLiteral(resourceName: "check_2")
                 }
                 cell.bubbleView.layer.cornerRadius = 10
-                cell.layoutIfNeeded()
+                cell.imageView1.layer.cornerRadius = 10
+                cell.imageView1.clipsToBounds = true
                 return cell
                 
             }
@@ -470,51 +521,54 @@ extension ChatVC : UITableViewDelegate,UITableViewDataSource
             {
                 let cell = self.chatTable.dequeueReusableCell(withIdentifier: "ChatVCCellImageR") as! ChatVCCellImageR
                 cell.backView.layer.cornerRadius = 10
+                
                 let url = URL(string:
                     temp.value)
                 if url != nil
                 {
-                    let task = URLSession.shared.dataTask(with: url!) { data, response, error in
-                        guard let data = data, error == nil else { return }
-                        
-                        DispatchQueue.main.async() {    // execute on main thread
-                            cell.imageView1.image = UIImage(data: data)
-                            if let image = UIImage(data: data) {
-                                let ratio = image.size.width / image.size.height
-                                if cell.backView.frame.width > cell.backView.frame.height {
-                                    let newHeight = cell.backView.frame.width / ratio
-                                    //cell.imageView1.frame.size = CGSize(width: cell.backView.frame.width, height: newHeight)
-                                    
-                                    if newHeight<300
+                    cell.width.constant = 300
+                    cell.height.constant = 300
+                    
+                    
+                    cell.imageView1?.sd_setImage(with: url) { (image, error, cache, urls) in
+                        if (error != nil)
+                        {
+                           
+                        }
+                        else
+                        {
+
+                                if image != nil
+                                {
+                                    if image!.size.width < 290
                                     {
-                                        cell.height.constant = newHeight
-                                        cell.width.constant = cell.backView.frame.width
+                                      
+                                        cell.imageView1.image = image
+                                        if image!.size.width > 90
+                                        {
+                                            cell.width.constant = (image?.size.width)!
+                                            cell.height.constant = (image?.size.height)!
+                                        }
+                                        else
+                                        {
+                                            cell.width.constant = 100
+                                            cell.height.constant = (image?.size.height)!
+                                        }
                                     }
                                     else
                                     {
-                                        cell.height.constant = newHeight/2
-                                        cell.width.constant = cell.backView.frame.width/2
+                                        let image = self.imageWithImage(sourceImage: image!, scaledToWidth: 290)
+                                        cell.imageView1.image = image
+                                        cell.width.constant = image.size.width
+                                        cell.height.constant = image.size.height
                                     }
+                                }
+                                else
+                                {
                                     
                                 }
-                                else{
-                                    let newWidth = cell.backView.frame.height * ratio
-                                    //cell.imageView1.frame.size = CGSize(width: newWidth, height: cell.backView.frame.height)
-                                    if newWidth<300
-                                    {
-                                        cell.width.constant = newWidth
-                                        cell.height.constant = cell.backView.frame.height
-                                    }
-                                    else
-                                    {
-                                        cell.width.constant = newWidth/2
-                                        cell.height.constant = cell.backView.frame.height/2
-                                    }
-                                }
-                            }
                         }
                     }
-                    task.resume()
                 }
                 let dateVar = temp.date
                 let dateFormatter = DateFormatter()
@@ -522,7 +576,8 @@ extension ChatVC : UITableViewDelegate,UITableViewDataSource
                 print(dateFormatter.string(from: dateVar!))
                 cell.timeLbl.text = dateFormatter.string(from: dateVar!)
                 cell.bubbleView.layer.cornerRadius = 10
-                cell.layoutIfNeeded()
+                cell.imageView1.layer.cornerRadius = 10
+                cell.imageView1.clipsToBounds = true
                 return cell
             }
             else
@@ -564,7 +619,7 @@ extension ChatVC : UITableViewDelegate,UITableViewDataSource
                     cell.tickImage.image = #imageLiteral(resourceName: "check_2")
                 }
                 cell.bubbleView.layer.cornerRadius = 10
-                cell.layoutIfNeeded()
+                
                 return cell
                 
             }
@@ -579,7 +634,7 @@ extension ChatVC : UITableViewDelegate,UITableViewDataSource
                 print(dateFormatter.string(from: dateVar!))
                 cell.timeLbl.text = dateFormatter.string(from: dateVar!)
                 cell.bubbleView.layer.cornerRadius = 10
-                cell.layoutIfNeeded()
+               
                 return cell
             }
             else
@@ -588,7 +643,7 @@ extension ChatVC : UITableViewDelegate,UITableViewDataSource
                 cell.backView.layer.cornerRadius = 10
                 cell.messageLbl.text = "Message not send"
                 cell.bubbleView.layer.cornerRadius = 10
-                cell.layoutIfNeeded()
+              
                 return cell
             }
         
@@ -600,7 +655,70 @@ extension ChatVC : UITableViewDelegate,UITableViewDataSource
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-   
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+         return UITableViewAutomaticDimension
+    }
+  
+}
+extension ChatVC : UINavigationControllerDelegate, UIImagePickerControllerDelegate
+{
+    func openPickerCamra()  {
+        
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let camera = UIAlertAction(title: "Take Photo", style: .default) { (action) in
+            
+            
+            let imagePicker = UIImagePickerController()
+            imagePicker.modalPresentationStyle = .popover
+            //imagePicker.preferredContentSize = CGSize(width: 320, height: 568)
+            imagePicker.sourceType = .camera
+            imagePicker.allowsEditing = false
+            imagePicker.delegate = self
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+        
+        let gallery = UIAlertAction(title: "Choose Photo", style: .default) { (action) in
+            
+            
+            let imagePicker = UIImagePickerController()
+            imagePicker.modalPresentationStyle = .popover
+            //imagePicker.preferredContentSize = CGSize(width: 320, height: 568)
+            imagePicker.sourceType = .photoLibrary
+            imagePicker.allowsEditing = false
+            imagePicker.delegate = self
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            
+            
+        }
+        alertController.addAction(camera)
+        alertController.addAction(gallery)
+        alertController.addAction(cancel)
+        //alertController.addAction(profileAction)
+        alertController.modalPresentationStyle = .popover
+        self.present(alertController, animated: true, completion: nil)
+        
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+          // self.chooseBuuton.setImage(pickedImage, for: .normal)
+            
+            self.UploadRequest(parameters: ["message_id":udidDevice+"\(Date())"], urlStr: "http://114.79.137.193:4011/upload/chat-file", imageName: "chat_file", actualImage: pickedImage)
+        }
+        self.dismiss(animated: true, completion: { () -> Void in
+            
+        })
+    }
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    
+        self.dismiss(animated: true, completion: { () -> Void in
+            
+        })
+    }
+    
 }
 
 class ChatVCCellImageR: UITableViewCell
@@ -662,3 +780,143 @@ extension UIButton {
 }
 
 
+extension ChatVC
+{
+    func UploadRequest(parameters:Dictionary<String, String>,urlStr : String ,imageName : String , actualImage : UIImage)
+    {
+        let url = URL(string: urlStr)
+        
+        let request = NSMutableURLRequest(url: url!)
+        request.httpMethod = "POST"
+        
+        let boundary = generateBoundaryString()
+        
+        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        
+        
+        
+        let image_data = UIImageJPEGRepresentation(actualImage, 0.0) //UIImagePNGRepresentation(profileImage.image!)
+        
+        
+        
+        if(image_data == nil)
+        {
+            return
+        }
+        
+        
+        let body = NSMutableData()
+        //"ABC\(parameters["message_id"] ?? "test").png"
+        let fname = "\(Date().timeIntervalSince1970)"+".png"
+        let mimetype = "image/png"
+        
+        
+        for (key, value) in parameters
+        {
+            
+            body.append("--\(boundary)\r\n".data(using: String.Encoding.utf8)!)
+            body.append("Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n\(value)".data(using: String.Encoding.utf8)!)
+            body.append("\r\n".data(using: String.Encoding.utf8)!)
+            
+        }
+        
+        body.append("--\(boundary)\r\n".data(using: String.Encoding.utf8)!)
+        body.append("Content-Disposition:form-data; name=\"test\"\r\n\r\n".data(using: String.Encoding.utf8)!)
+        body.append("hi\r\n".data(using: String.Encoding.utf8)!)
+        
+        body.append("--\(boundary)\r\n".data(using: String.Encoding.utf8)!)
+        body.append("Content-Disposition:form-data; name=\"\(imageName)\"; filename=\"\(fname)\"\r\n".data(using: String.Encoding.utf8)!)
+        body.append("Content-Type: \(mimetype)\r\n\r\n".data(using: String.Encoding.utf8)!)
+        body.append(image_data!)
+        body.append("\r\n".data(using: String.Encoding.utf8)!)
+        
+        body.append("--\(boundary)--\r\n".data(using: String.Encoding.utf8)!)
+        //        print("Body:-", body)
+        request.httpBody = body as Data
+        _ = URLSession.shared
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest)
+        {            (
+            data, response, error) in
+            
+            guard let _:Data = data, let _:URLResponse = response  , error == nil else
+            {
+                print("Data Not Found error")
+                
+                return
+            }
+            
+            let dataString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+            do
+            {
+                if let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? [String: Any]
+                {
+                    print(json)
+                    if let status = json["status"] as? Int
+                    {
+                        if  status == 1
+                        {
+                            if let message_id = json["message_id"] as? String
+                            {
+                                DispatchQueue.main.async()
+                                {
+                                    let payload = ["type":"image","value":json["file_path"] as? String ?? "","user_id":"1","coach_id":"1","sent_by":"2","message_id":message_id,"is_delivered":"0","delivered_on":"","is_read":"0","read_on":""]
+                                    
+                                    let temp = MessageInfo()
+                                    
+                                    
+                                    temp.initData(type: payload["type"], value: payload["value"], user_id: payload["user_id"], coach_id: payload["coach_id"], sent_by: payload["sent_by"], message_id: payload["message_id"], is_delivered: payload["is_delivered"], delivered_on:payload["delivered_on"], is_read: payload["is_read"], read_on: payload["read_on"], date: Date())
+                                    DBManager.shared.insertModelInDataBase(messageInfo: [temp])
+                                    self.sendMessage(messageInfo: payload)
+                                    self.messageList = [MessageInfo]()
+                                    self.messageList = DBManager.shared.getAllMessages()
+                                    self.chatTable.reloadData()
+                                    if self.messageList.count != 0
+                                    {
+                                        self.chatTable.scrollToRow(at: IndexPath(row: self.messageList.count-1, section: 0), at: UITableViewScrollPosition.bottom, animated: true)
+                                    }
+                                    
+                                }
+                            }
+                            
+                        }
+                    }
+                }
+            }
+            catch let error
+            {
+                print(error.localizedDescription)
+            }
+            
+            
+            print(dataString ?? "nothing")
+        }
+        task.resume()
+    }
+    func generateBoundaryString() -> String
+    {
+        return "Boundary-\(UUID().uuidString)"
+    }
+    
+}
+
+
+
+
+//cell.imageView1.image = image
+//if let image = image {
+//    let ratio = (image.size.width / image.size.height)/2
+//    if cell.backView.frame.width > cell.backView.frame.height {
+//        let newHeight = cell.backView.frame.width / ratio
+//        //cell.imageView1.frame.size = CGSize(width: cell.backView.frame.width, height: newHeight)
+//        cell.width.constant = cell.backView.frame.width
+//        cell.height.constant = newHeight
+//    }
+//    else{
+//        let newWidth = cell.backView.frame.height * ratio
+//        //cell.imageView1.frame.size = CGSize(width: newWidth, height: containerView.frame.height)
+//        cell.height.constant = cell.backView.frame.height
+//        cell.width.constant = newWidth
+//
+//    }
+//}

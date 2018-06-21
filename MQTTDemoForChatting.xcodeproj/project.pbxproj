@@ -13,7 +13,6 @@
 		1A27337420C9309E001600DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A27337220C9309E001600DE /* Main.storyboard */; };
 		1A27337720C9309E001600DE /* MQTTDemoForChatting.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1A27337520C9309E001600DE /* MQTTDemoForChatting.xcdatamodeld */; };
 		1A27337920C930A0001600DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A27337820C930A0001600DE /* Assets.xcassets */; };
-		1A27337C20C930A0001600DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A27337A20C930A0001600DE /* LaunchScreen.storyboard */; };
 		1A27338720C930A0001600DE /* MQTTDemoForChattingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A27338620C930A0001600DE /* MQTTDemoForChattingTests.swift */; };
 		1A27339220C930A0001600DE /* MQTTDemoForChattingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A27339120C930A0001600DE /* MQTTDemoForChattingUITests.swift */; };
 		1A6F129420CBA3B100E350AF /* BackgroundTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6F129320CBA3B100E350AF /* BackgroundTask.swift */; };
@@ -21,6 +20,7 @@
 		6FE2A306626F62838B870ACA /* Pods_MQTTDemoForChatting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CD5400E1337AA92B4FBD343 /* Pods_MQTTDemoForChatting.framework */; };
 		DA19502120DA324E00E12457 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA19502020DA324E00E12457 /* DBManager.swift */; };
 		DA3D4EAE20D91FE80003F590 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3D4EAD20D91FE80003F590 /* ChatVC.swift */; };
+		DAB9AE9E20DBC8DF007C1D56 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAB9AE9D20DBC8DF007C1D56 /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +48,6 @@
 		1A27337320C9309E001600DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1A27337620C9309E001600DE /* MQTTDemoForChatting.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MQTTDemoForChatting.xcdatamodel; sourceTree = "<group>"; };
 		1A27337820C930A0001600DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		1A27337B20C930A0001600DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1A27337D20C930A0001600DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A27338220C930A0001600DE /* MQTTDemoForChattingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MQTTDemoForChattingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A27338620C930A0001600DE /* MQTTDemoForChattingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MQTTDemoForChattingTests.swift; sourceTree = "<group>"; };
@@ -66,6 +65,7 @@
 		C4A864BF429C78BD549F679B /* Pods-MQTTDemoForChattingUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MQTTDemoForChattingUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MQTTDemoForChattingUITests/Pods-MQTTDemoForChattingUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DA19502020DA324E00E12457 /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		DA3D4EAD20D91FE80003F590 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
+		DAB9AE9D20DBC8DF007C1D56 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		DE8F268B0B2C1AA5E46D9697 /* Pods_MQTTDemoForChattingUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MQTTDemoForChattingUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -129,7 +129,7 @@
 				DA3D4EAD20D91FE80003F590 /* ChatVC.swift */,
 				1A27337220C9309E001600DE /* Main.storyboard */,
 				1A27337820C930A0001600DE /* Assets.xcassets */,
-				1A27337A20C930A0001600DE /* LaunchScreen.storyboard */,
+				DAB9AE9D20DBC8DF007C1D56 /* Launch Screen.storyboard */,
 				1A27337D20C930A0001600DE /* Info.plist */,
 				1A27337520C9309E001600DE /* MQTTDemoForChatting.xcdatamodeld */,
 			);
@@ -295,7 +295,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A27337C20C930A0001600DE /* LaunchScreen.storyboard in Resources */,
+				DAB9AE9E20DBC8DF007C1D56 /* Launch Screen.storyboard in Resources */,
 				1A27337920C930A0001600DE /* Assets.xcassets in Resources */,
 				1A27337420C9309E001600DE /* Main.storyboard in Resources */,
 			);
@@ -340,15 +340,19 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MQTTDemoForChatting/Pods-MQTTDemoForChatting-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Moscapsule/Moscapsule.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moscapsule.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -525,14 +529,6 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		1A27337A20C930A0001600DE /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1A27337B20C930A0001600DE /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -658,6 +654,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UMUY72KH99;
 				INFOPLIST_FILE = MQTTDemoForChatting/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -677,6 +674,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UMUY72KH99;
 				INFOPLIST_FILE = MQTTDemoForChatting/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
